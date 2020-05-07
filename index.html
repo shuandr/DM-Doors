@@ -27,19 +27,19 @@
     <div ng-app="mainDM" ng-controller="mainDmCtrl">
         <div class="off-canvas-wrapper">
             <!-- OFF-CANVAS -->
-            <div class="off-canvas position-top" id="catView" data-off-canvas data-transition="overlap">
+            <div class="off-canvas position-top" id="catView" data-off-canvas data-transition="overlap" ng-keydown="key($event)">
                 <button class="close-button " aria-label="Close menu" type="button" data-close>
                     <span class="light" aria-hidden="true">&times;</span>
                 </button>
-                <div class="grid-x grid-padding-x align-center-middle" style="height: 100%">
-                    <div class="cell auto text-right small-order-2 large-order-1">
-                        <button ng-click="prevImg()" type="button" class="light small button dark-024-bgrd"><i class="fa fa-arrow-left fa-2x"></i></button>
-                    </div>
-                    <div class="cell small-12 small-order-1 large-order-2 large-shrink text-center white-bg" style="padding: 0.8rem">
+                <div class="grid-x grid-padding-x align-center-middle" style="height: 100%; ">
+                    <!--  <div class="cell auto text-right small-order-2 large-order-1">
+                   </div> -->
+                    <div class="cell small-12 large-shrink text-center" style="position: relative; overflow-x: visible " >
+                        <button ng-click="prevImg()" type="button" class="button prv-btn"><i class="fa fa-angle-left fa-3x"></i></button>
+                        <button ng-click="nextImg()" type="button" class="button nxt-btn"><i class="fa fa-angle-right fa-3x"></i></button>
                         <img src="assets/img/{[{selectedCat.id}]}/{[{selectedImg}]}.jpg" alt="">
-                    </div>
-                    <div class="cell auto small-order-3">
-                        <button ng-click="nextImg()" type="button" class="light small button dark-024-bgrd"><i class="fa fa-arrow-right fa-2x"></i></button>
+                        <!--  </div>
+                   <div class="cell auto small-order-3"> -->
                     </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                     </div>
                     <div class="header text-center brown-overlay">
                         <div class="grid-y " style="height: 100%">
-                            <div class="cell " style="height: 56%">
+                            <div class="cell " style="height: 54%">
                                 <img class="main-logo " src="assets/img/DM-logo.png" alt="">
                             </div>
                             <div class="cell show-for-portrait hide-for-large">
@@ -94,7 +94,7 @@
                     <h2 class="light uppercase text-center">наші роботи</h2>
                     <div data-sticky-container>
                         <div class="works-cat sticky" data-sticky data-sticky-on="small" data-options="marginTop:0;" data-top-anchor="ourWorks" data-btm-anchor="ourWorks:bottom">
-                            <div class="  show-for-medium grid-x  grid-padding-x  medium-up-4 large-up-6 xlarge-up-8" >
+                            <div class="  show-for-medium grid-x  grid-padding-x  medium-up-4 large-up-6 xlarge-up-8 align-center">
                                 <div class=" cell " ng-repeat="cat in data.works">
                                     <a ng-click="selectCat($index)">
                                         <h6 class=" s-bold uppercase text-center">{[{cat.name}]} </h6>
@@ -103,13 +103,12 @@
                             </div>
                             <div class="hide-for-medium grid-x grid-padding-x align-center">
                                 <div class="cell small-10 s-bold ">
-                                    <select class="s-bold" ng-model="selectedCat" ng-options="cat.name for cat in data.works" >
+                                    <select class="s-bold" ng-model="selectedCat" ng-options="cat.name for cat in data.works">
                                     </select>
                                 </div>
                             </div>
                         </div>
                     </div><br>
-                
                     <div class="grid-x grid-padding-x align-center">
                         <div class=" large-10 cell text-center">
                             <p class="light ">{[{selectedCat.descr}]}</p>

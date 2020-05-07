@@ -44,6 +44,16 @@ app.controller('mainDmCtrl', function($scope, $http) {
         };
     };
 
+    $scope.key = function($event){
+        if ($event.keyCode == 37){ // left arrow
+            $scope.prevImg();  
+
+        }
+        else if ($event.keyCode == 39) {// right arrow
+            $scope.nextImg();
+        }
+    }
+
 
 
 });
